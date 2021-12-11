@@ -1,12 +1,12 @@
 <template>
-<div>
-  <p>About component</p>
-</div>
+  <div>
+    This if form config page
+  </div>
 </template>
 
 <script>
 export default {
-  name: "about"
+  name: "form"
 }
 </script>
 
