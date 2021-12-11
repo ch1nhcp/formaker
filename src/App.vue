@@ -11,7 +11,7 @@
       <div class="col-md-9 mp-padding-left-0">
         <b-card class="mb-3" header="Secondary">
           <template #header class="">
-            <span class="ml-1"> Config: </span>
+            <span class="ml-1"> Content: </span>
           </template>
           <b-card-body>
             <router-view></router-view>
@@ -42,6 +42,6 @@ export default {
 
 <style>
 body {
-  background-color: #e9ebee;
+  background-color: #dfecff;
 }
 </style>
