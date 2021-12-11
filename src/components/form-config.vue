@@ -24,10 +24,24 @@
         v-bind:fieldDetail="field"
         v-bind:deleteField="handleDeleteField"
       />
-      <b-button type="submit" variant="primary" class="text-right"
-        >Add field</b-button
+      <b-button
+        type="submit"
+        variant="primary"
+        class="text-center"
+        @click="handleAddField"
+      >
+        <i class="far fa-plus-square mx-2"></i>Add field</b-button
       >
     </div>
+    <hr />
+    <b-button
+      type="submit"
+      variant="primary"
+      class="float-right"
+      @click="handleSubmit"
+    >
+      <i class="far fa-save mx-2"></i>Save Form</b-button
+    >
   </div>
 </template>
 
@@ -48,19 +62,19 @@ export default {
         fields: [
           {
             id: "1",
-            field_type: "radio",
-            options: ["a", "b", "c"],
-            fieldName: "Gender",
-            required: "true",
-          },
-          {
-            id: "2",
             field_type: "text",
             options: [],
             fieldName: "Address",
             required: "false",
           },
-        ]
+          {
+            id: "2",
+            field_type: "radio",
+            options: ["a", "b", "c"],
+            fieldName: "Gender",
+            required: "true",
+          },
+        ],
       },
     };
   },
@@ -70,6 +84,20 @@ export default {
         (item) => item.id === id
       );
       this.mockData.fields.splice(indexToDelete, 1);
+    },
+
+    handleAddField() {
+      this.mockData.fields.push({
+        id: toString(new Date().getTime()),
+        field_type: "",
+        options: [""],
+        fieldName: "",
+        required: "false",
+      });
+    },
+
+    handleSubmit() {
+      console.log("Submit form successfully!");
     },
   },
 };

@@ -21,9 +21,17 @@
           <td>{{ form.description }}</td>
           <td>{{ form.status }}</td>
           <td class="d-flex justify-content-between">
-            <b-button variant="primary" size="sm" v-b-modal.form-detail @click="handlePreviewForm">View</b-button>
+            <b-button
+              variant="primary"
+              size="sm"
+              v-b-modal.form-detail
+              @click="handlePreviewForm"
+              >View</b-button
+            >
             <b-button variant="secondary" size="sm"
-              ><router-link class="btn--edit-form" :to="'/form-config?id=' + form.id"
+              ><router-link
+                class="btn--edit-form"
+                :to="'/form-config?id=' + form.id"
                 >Edit</router-link
               ></b-button
             >
@@ -40,20 +48,26 @@
 
     <b-modal id="form-detail" ok-only ok-title="Close">
       <template #modal-title>
-        {{previewingForm.name}}
+        {{ previewingForm.name }}
       </template>
       <div>
-        <p class="description">Description: {{previewingForm.description}}</p>
-        <hr/>
+        <p class="description">Description: {{ previewingForm.description }}</p>
+        <hr />
         <b-form-group v-for="field in previewingForm.fields" :key="field.id">
-          <label>{{field.fieldName}}:</label>
+          <label>{{ field.fieldName }}:</label>
           <b-form-input v-if="field.field_type === 'text'"></b-form-input>
-          <b-form-textarea v-if="field.field_type === 'long text'"></b-form-textarea>
+          <b-form-textarea
+            v-if="field.field_type === 'long text'"
+          ></b-form-textarea>
           <div v-if="field.field_type === 'radio'">
-            <b-form-radio v-for="option in field.options" :key="option">{{option}}</b-form-radio>
+            <b-form-radio v-for="option in field.options" :key="option">{{
+              option
+            }}</b-form-radio>
           </div>
           <div v-if="field.field_type === 'checkbox'">
-            <b-form-checkbox v-for="option in field.options" :key="option">{{option}}</b-form-checkbox>
+            <b-form-checkbox v-for="option in field.options" :key="option">{{
+              option
+            }}</b-form-checkbox>
           </div>
           <div v-if="field.field_type === 'select'">
             <b-form-select :options="field.options"></b-form-select>
@@ -62,7 +76,7 @@
       </div>
     </b-modal>
 
-    <b-button variant="primary">
+    <b-button variant="outline-primary">
       <router-link :to="'/form-config'">Add form</router-link>
     </b-button>
   </div>
@@ -76,11 +90,11 @@ export default {
       fields: ["name", "description", "status"],
       forms: [],
       previewingForm: {
-          id: "",
-          name: "",
-          description: "",
-          fields: []
-        }
+        id: "",
+        name: "",
+        description: "",
+        fields: [],
+      },
     };
   },
   props: { deleteForm: Function },
@@ -111,7 +125,7 @@ export default {
             fieldName: "Address",
             required: false,
           },
-        ]
+        ],
       };
       console.log(id);
     },
@@ -152,10 +166,17 @@ export default {
 </script>
 
 <style>
-.btn--edit-form { color: white; }
-.btn--edit-form:hover { text-decoration: none; color: white; }
+.btn--edit-form {
+  color: white;
+}
+.btn--edit-form:hover {
+  text-decoration: none;
+  color: white;
+}
 th {
   text-align: center;
 }
-.description {font-style: italic;}
+.description {
+  font-style: italic;
+}
 </style>
