@@ -43,24 +43,17 @@ export default {
             {
               id: 1,
               icon: 'code-slash',
-              title: 'Trang chủ',
+              title: 'Form manager',
               type: 'router', // router | fixed_link
               value: '/',
             },
             {
-              id: 2,
+              id: 4,
               icon: 'code-slash',
-              title: 'Về tôi',
+              title: 'Form config',
               type: 'router', // router | fixed_link
-              value: '/about',
+              value: '/form',
             },
-            {
-              id: 3,
-              icon: 'code-slash',
-              title: 'Our Blog',
-              type: 'fixed_link', // router | fixed_link
-              value: '',
-            }
           ]
         },
         {
