@@ -1,29 +1,10 @@
 <template>
   <div>
-    <b-row align-v="center">
-      <b-col cols="10">
-        <b-card>
-          <b-form>
-            <b-form-group
-              :id="fieldDetail.id + '--field-type'"
-              label="Field type:"
-              :label-for="fieldDetail.id + '--field-type'"
-            >
-              <b-form-select
-                v-model="fieldDetail.field_type"
-                :options="fieldTypeOptions"
-                required
-              ></b-form-select>
-            </b-form-group>
-
-            <b-form-checkbox
-              value="true"
-              unchecked-value="false"
-              v-model="fieldDetail.required"
-              >Required?</b-form-checkbox
-            >
-
-            <b-form-group
+    <b-card>
+      <b-form>
+        <b-row>
+          <b-col cols="8"
+            ><b-form-group
               :id="fieldDetail.id + fieldDetail.name"
               label="Field name:"
               :label-for="fieldDetail.id + fieldDetail.name"
@@ -35,47 +16,67 @@
                 required
               ></b-form-input>
             </b-form-group>
-
-            <b-form-group
-              v-if="
-                fieldDetail.field_type == 'radio' ||
-                fieldDetail.field_type == 'select' ||
-                fieldDetail.field_type == 'checkbox'
-              "
+          </b-col>
+          <b-col
+            ><b-form-group
+              :id="fieldDetail.id + '--field-type'"
+              label="Field type:"
+              :label-for="fieldDetail.id + '--field-type'"
             >
-              <div>Options</div>
+              <b-form-select
+                v-model="fieldDetail.field_type"
+                :options="fieldTypeOptions"
+                required
+              ></b-form-select> </b-form-group
+          ></b-col>
+        </b-row>
 
-              <div v-for="(option, index) in fieldDetail.options" :key="option">
-                <b-row class="my-2">
-                  <b-col>
-                    <b-form-input
-                      v-model="fieldDetail.options[index]"
-                    ></b-form-input
-                  ></b-col>
-                  <b-col>
-                    <b-button
-                      variant="danger"
-                      @click="handleDeleteOption(index)"
-                      ><i class="fa fa-trash" aria-hidden="true"></i
-                    ></b-button>
-                  </b-col>
-                </b-row>
-              </div>
-
-              <!-- Add option -->
-              <b-button variant="outline-primary" @click="handleAddField"
-                >Add option</b-button
-              >
-            </b-form-group>
-          </b-form>
-        </b-card>
-      </b-col>
-      <b-col>
-        <b-button type="delete" variant="danger" @click="handleDeleteField"
-          >Delete</b-button
+        <b-form-group
+          v-if="
+            fieldDetail.field_type == 'radio' ||
+            fieldDetail.field_type == 'select' ||
+            fieldDetail.field_type == 'checkbox'
+          "
         >
-      </b-col>
-    </b-row>
+          <div v-for="(option, index) in fieldDetail.options" :key="option">
+            <b-row class="my-1">
+              <b-col>
+                <b-form-input
+                  v-model="fieldDetail.options[index]"
+                ></b-form-input
+              ></b-col>
+              <b-col>
+                <b-button variant="danger" @click="handleDeleteOption(index)"
+                  ><i class="fa fa-trash" aria-hidden="true"></i
+                ></b-button>
+              </b-col>
+            </b-row>
+          </div>
+
+          <!-- Add option -->
+          <b-button variant="outline-primary" @click="handleAddField"
+            >Add option</b-button
+          >
+        </b-form-group>
+      </b-form>
+
+      <b-row>
+        <b-col cols="8"></b-col>
+        <b-col cols="2">
+          <b-form-checkbox
+            value="true"
+            unchecked-value="false"
+            v-model="fieldDetail.required"
+            >Required?</b-form-checkbox
+          >
+        </b-col>
+        <b-col cols="2">
+          <b-button type="delete" variant="danger" @click="handleDeleteField"
+            >Delete</b-button
+          >
+        </b-col>
+      </b-row>
+    </b-card>
 
     <hr />
   </div>
@@ -89,12 +90,12 @@ export default {
       fieldTypeOptions: [
         "text",
         "long text",
-        "radio",
-        "checkbox",
-        "select",
         "number",
         "url",
         "email",
+        "radio",
+        "checkbox",
+        "select",
       ],
     };
   },
