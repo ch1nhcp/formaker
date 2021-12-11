@@ -17,10 +17,10 @@ let routeData = [
       ),
   },
   {
-    path: "/form",
+    path: "/form-config",
     component: () =>
       lazyLoadView(
-        import(/* webpackChunkName: "ohmygod" */ "../components/form")
+        import(/* webpackChunkName: "ohmygod" */ "../components/form-config")
       ),
   },
 ];
