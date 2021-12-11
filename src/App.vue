@@ -9,11 +9,9 @@
       </div>
 
       <div class="col-md-9 mp-padding-left-0">
-        <b-card
-            class="mb-3"
-            header="Secondary">
+        <b-card class="mb-3" header="Secondary">
           <template #header class="">
-            <span class="ml-1"> Nội dung gen ra ở đây</span>
+            <span class="ml-1"> Config: </span>
           </template>
           <b-card-body>
             <router-view></router-view>
@@ -25,21 +23,21 @@
 </template>
 
 <script>
-import SidebarMenu from './components/partial/sidebar_menu'
-import NavBar from './components/partial/navbar'
+import SidebarMenu from "./components/partial/sidebar_menu";
+import NavBar from "./components/partial/navbar";
 
 export default {
-  name: 'App',
+  name: "App",
   computed: {
     routerViewKey() {
-      return this.$route.meta.routeKey || this.$route.path
+      return this.$route.meta.routeKey || this.$route.path;
     },
   },
   components: {
     SidebarMenu,
     NavBar,
-  }
-}
+  },
+};
 </script>
 
 <style>
