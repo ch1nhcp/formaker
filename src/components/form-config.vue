@@ -24,7 +24,11 @@
         v-bind:fieldDetail="field"
         v-bind:deleteField="handleDeleteField"
       />
-      <b-button type="submit" variant="primary" class="text-right"
+      <b-button
+        type="submit"
+        variant="primary"
+        class="text-right"
+        @click="handleAddField"
         >Add field</b-button
       >
     </div>
@@ -60,7 +64,7 @@ export default {
             fieldName: "Address",
             required: "false",
           },
-        ]
+        ],
       },
     };
   },
@@ -70,6 +74,10 @@ export default {
         (item) => item.id === id
       );
       this.mockData.fields.splice(indexToDelete, 1);
+    },
+
+    handleAddField() {
+      this.mockData.fields.push("");
     },
   },
 };
