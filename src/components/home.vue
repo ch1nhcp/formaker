@@ -16,13 +16,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(form) in forms" :key="form.id">
+        <tr v-for="form in forms" :key="form.id">
           <td>{{ form.name }}</td>
           <td>{{ form.description }}</td>
           <td>{{ form.status }}</td>
           <td class="d-flex justify-content-between">
-            <b-button variant="warning" size="sm" v-on:click="editForm"
-              ><router-link :to="'/form&id=' + form.id"
+            <b-button variant="primary" size="sm">View</b-button>
+            <b-button variant="secondary" size="sm"
+              ><router-link :to="'/form-config?id=' + form.id"
                 >Edit</router-link
               ></b-button
             >
@@ -36,6 +37,9 @@
         </tr>
       </tbody>
     </table>
+    <b-button variant="primary">
+      <router-link :to="'/form-config'">Add form</router-link>
+    </b-button>
   </div>
 </template>
 
@@ -91,4 +95,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+a {
+  text-decoration: none;
+  color: white;
+}
+th {
+  text-align: center;
+}
+</style>

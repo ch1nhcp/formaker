@@ -81,7 +81,7 @@
 
 <script>
 export default {
-  name: "form",
+  name: "FormField",
   data() {
     return {
       fieldTypeOption: [

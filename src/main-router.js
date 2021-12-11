@@ -1,6 +1,6 @@
 import VueRouter from "vue-router";
 import Home from "./components/home";
-import Form from "./components/form";
+import FormConfig from "./components/form-config";
 import ApiGenerator from "./components/tools/api-gen/views/index";
 
 const router = new VueRouter({
@@ -14,8 +14,8 @@ const router = new VueRouter({
       component: ApiGenerator,
     },
     {
-      path: "/form",
-      component: Form,
+      path: "/form-config",
+      component: FormConfig,
     },
   ],
 });

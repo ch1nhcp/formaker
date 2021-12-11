@@ -52,7 +52,7 @@ export default {
               icon: 'code-slash',
               title: 'Form config',
               type: 'router', // router | fixed_link
-              value: '/form',
+              value: '/form-config',
             },
           ]
         },
