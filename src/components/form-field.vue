@@ -5,26 +5,25 @@
         <b-card>
           <b-form>
             <b-form-group
-              id="input-group-3"
+              :id="fieldDetail.id+'--field-type'"
               label="Field type:"
-              label-for="input-3"
+              :label-for="fieldDetail.id+'--field-type'"
             >
               <b-form-select
-                id="input-3"
                 v-model="fieldDetail.field_type"
-                :options="fieldTypeOption"
+                :options="fieldTypeOptions"
                 required
               ></b-form-select>
             </b-form-group>
 
-            <b-form-checkbox v-model="fieldDetail.required" id="checkboxes-4"
+            <b-form-checkbox value=true unchecked-value=false v-model="fieldDetail.required"
               >Required?</b-form-checkbox
             >
 
             <b-form-group
-              id="input-group-2"
-              label="Your Name:"
-              label-for="input-2"
+              :id="fieldDetail.id+fieldDetail.name"
+              label="Field name:"
+              :label-for="fieldDetail.id+fieldDetail.name"
             >
               <b-form-input
                 id="input-2"
@@ -84,7 +83,7 @@ export default {
   name: "FormField",
   data() {
     return {
-      fieldTypeOption: [
+      fieldTypeOptions: [
         "text",
         "long text",
         "radio",

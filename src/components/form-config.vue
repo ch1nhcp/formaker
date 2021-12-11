@@ -51,26 +51,25 @@ export default {
             field_type: "radio",
             options: ["a", "b", "c"],
             fieldName: "Gender",
-            required: true,
+            required: "true",
           },
           {
             id: "2",
             field_type: "text",
             options: [],
             fieldName: "Address",
-            required: false,
+            required: "false",
           },
         ]
       },
     };
   },
   methods: {
-    handleDeleteField(index) {
-      console.log(index);
-      const indexToDelete = this.mockData.findIndex(
-        (item) => item.id === index
+    handleDeleteField(id) {
+      const indexToDelete = this.mockData.fields.findIndex(
+        (item) => item.id === id
       );
-      this.mockData.splice(indexToDelete, 1);
+      this.mockData.fields.splice(indexToDelete, 1);
     },
   },
 };
