@@ -3,14 +3,14 @@
     <label for="form-name">Form name:</label>
     <b-form-input
       id="form-name"
-      v-model="mockData.name"
+      v-model="edittingForm.name"
       placeholder="Enter form name"
     ></b-form-input>
     <hr />
     <label for="form-description">Form description:</label>
     <b-form-textarea
       id="form-description"
-      v-model="mockData.description"
+      v-model="edittingForm.description"
       placeholder="Enter description..."
       rows="3"
       max-rows="3"
@@ -19,7 +19,7 @@
     <div>
       <label>Form fields:</label>
       <FormField
-        v-for="field in mockData.fields"
+        v-for="field in edittingForm.fields"
         :key="field.id"
         v-bind:fieldDetail="field"
         v-bind:deleteField="handleDeleteField"
@@ -55,41 +55,26 @@ export default {
   },
   data() {
     return {
-      mockData: {
-        id: "1",
-        name: "Form 1",
-        description: "Some description",
-        fields: [
-          {
-            id: "1",
-            field_type: "text",
-            options: [],
-            fieldName: "Address",
-            required: "false",
-          },
-          {
-            id: "2",
-            field_type: "radio",
-            options: ["a", "b", "c"],
-            fieldName: "Gender",
-            required: "true",
-          },
-        ],
+      edittingForm: {
+        id: "",
+        name: "",
+        description: "",
+        fields: [],
       },
     };
   },
   methods: {
     handleDeleteField(id) {
-      const indexToDelete = this.mockData.fields.findIndex(
+      const indexToDelete = this.edittingForm.fields.findIndex(
         (item) => item.id === id
       );
-      this.mockData.fields.splice(indexToDelete, 1);
+      this.edittingForm.fields.splice(indexToDelete, 1);
     },
 
     handleAddField() {
-      this.mockData.fields.push({
+      this.edittingForm.fields.push({
         id: toString(new Date().getTime()),
-        field_type: "",
+        type: "",
         options: [""],
         fieldName: "",
         required: "false",
@@ -99,9 +84,21 @@ export default {
     handleSubmit() {
       console.log("Submit form successfully!");
     },
+
+    async getData() {
+      if (this.$route.query.id) {
+        let rawResponse = await fetch(`https://sleepy-falls-53919.herokuapp.com/admin/forms/${this.$route.query.id}`);
+        let response = await rawResponse.json();
+        console.log(response);
+        this.edittingForm = {...response.data};
+      }
+    }
   },
+
+  created() {
+    this.getData();
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

@@ -11,7 +11,7 @@
             >
               <b-form-input
                 id="input-2"
-                v-model="fieldDetail.fieldName"
+                v-model="fieldDetail.name"
                 placeholder="Enter name"
                 required
               ></b-form-input>
@@ -24,7 +24,7 @@
               :label-for="fieldDetail.id + '--field-type'"
             >
               <b-form-select
-                v-model="fieldDetail.field_type"
+                v-model="fieldDetail.type"
                 :options="fieldTypeOptions"
                 required
               ></b-form-select> </b-form-group
@@ -33,16 +33,17 @@
 
         <b-form-group
           v-if="
-            fieldDetail.field_type == 'radio' ||
-            fieldDetail.field_type == 'select' ||
-            fieldDetail.field_type == 'checkbox'
+            fieldDetail.type == 'radio' ||
+            fieldDetail.type == 'select' ||
+            fieldDetail.type == 'checkbox'
           "
         >
-          <div v-for="(option, index) in fieldDetail.options" :key="option">
+          <div v-for="(option, index) in fieldDetail.options" :key="option.id">
             <b-row class="my-1">
               <b-col>
                 <b-form-input
-                  v-model="fieldDetail.options[index]"
+                  :value="option.name"
+                  v-on:input="modifyOption($event, index)"
                 ></b-form-input
               ></b-col>
               <b-col>
@@ -64,8 +65,8 @@
         <b-col cols="8"></b-col>
         <b-col cols="2">
           <b-form-checkbox
-            value="true"
-            unchecked-value="false"
+            value=true
+            unchecked-value=false
             v-model="fieldDetail.required"
             >Required?</b-form-checkbox
           >
@@ -111,6 +112,9 @@ export default {
     handleDeleteField() {
       this.deleteField(this.fieldDetail.id);
     },
+    modifyOption(value, index) {
+      this.fieldDetail.options[index] = value;
+    }
   },
 
   mounted() {

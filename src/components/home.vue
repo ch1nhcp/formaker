@@ -25,7 +25,7 @@
               variant="primary"
               size="sm"
               v-b-modal.form-detail
-              @click="handlePreviewForm"
+              @click="handlePreviewForm(form.id)"
               >View</b-button
             >
             <b-button variant="secondary" size="sm"
@@ -46,6 +46,7 @@
       </tbody>
     </table>
 
+    <!-- preview form -->
     <b-modal id="form-detail" ok-only ok-title="Close">
       <template #modal-title>
         {{ previewingForm.name }}
@@ -54,30 +55,31 @@
         <p class="description">Description: {{ previewingForm.description }}</p>
         <hr />
         <b-form-group v-for="field in previewingForm.fields" :key="field.id">
-          <label>{{ field.fieldName }}:</label>
-          <b-form-input v-if="field.field_type === 'text'"></b-form-input>
+          <label>{{ field.name }}:</label>
+          <b-form-input v-if="field.type === 'text'"></b-form-input>
           <b-form-textarea
-            v-if="field.field_type === 'long text'"
+            v-if="field.type === 'long text'"
           ></b-form-textarea>
-          <div v-if="field.field_type === 'radio'">
-            <b-form-radio v-for="option in field.options" :key="option">{{
-              option
+          <div v-if="field.type === 'radio'">
+            <b-form-radio :name="field.name" v-for="option in field.options" :key="option.id">{{
+              option.name
             }}</b-form-radio>
           </div>
-          <div v-if="field.field_type === 'checkbox'">
-            <b-form-checkbox v-for="option in field.options" :key="option">{{
-              option
+          <div v-if="field.type === 'checkbox'">
+            <b-form-checkbox v-for="option in field.options" :key="option.id">{{
+              option.name
             }}</b-form-checkbox>
           </div>
-          <div v-if="field.field_type === 'select'">
-            <b-form-select :options="field.options"></b-form-select>
+          <div v-if="field.type === 'select'">
+            <b-form-select :options="field.previewOptions"></b-form-select>
+            
           </div>
         </b-form-group>
       </div>
     </b-modal>
 
     <b-button variant="outline-primary">
-      <router-link :to="'/form-config'">Add form</router-link>
+      <router-link class="btn--add-form" :to="'/form-config'">Add form</router-link>
     </b-button>
   </div>
 </template>
@@ -103,57 +105,31 @@ export default {
       const indexToDelete = this.forms.findIndex((item) => item.id === id);
       this.forms.splice(indexToDelete, 1);
     },
-    handlePreviewForm(id) {
+    async handlePreviewForm(id) {
       // Sau này dùng id của form để gọi API lấy form detail rồi gán vào this.previewingForm
-
-      this.previewingForm = {
-        id: "1",
-        name: "Form 1",
-        description: "Some description",
-        fields: [
-          {
-            id: "1",
-            field_type: "select",
-            options: ["a", "b", "c"],
-            fieldName: "Gender",
-            required: true,
-          },
-          {
-            id: "2",
-            field_type: "text",
-            options: [],
-            fieldName: "Address",
-            required: false,
-          },
-        ],
-      };
       console.log(id);
+      let rawResponse = await fetch(`https://sleepy-falls-53919.herokuapp.com/admin/forms/${id}`)
+      let response = await rawResponse.json();
+      this.previewingForm = {...response.data};
+
+      for (let field of this.previewingForm.fields) {
+        if (field.options) {
+          const optionsTemp = [];
+          for (let option of field.options) {
+            optionsTemp.push({value: option.id, text: option.name})
+          }
+          field.previewOptions = optionsTemp;
+        }
+      }
     },
     async getData() {
       try {
-        // let response = await fetch("http://jsonplaceholder.typicode.com/posts");
-        // this.forms = await response.json();
-        let data = {
-          success: true,
-          data: {
-            list: [
-              {
-                id: 1,
-                name: "Form 1",
-                description: "",
-                status: "enabled",
-              },
-              {
-                id: 2,
-                name: "Form 2",
-                description: "",
-                status: "disabled",
-              },
-            ],
-            count: 10,
-          },
-        };
-        this.forms = data.data.list;
+        let rawResponse = await fetch("https://sleepy-falls-53919.herokuapp.com/admin/forms");
+        let response = await rawResponse.json();
+        console.log(response);
+        
+        
+        this.forms = [...response.data];
       } catch (error) {
         console.log(error);
       }
@@ -169,7 +145,7 @@ export default {
 .btn--edit-form {
   color: white;
 }
-.btn--edit-form:hover {
+.btn--edit-form:hover, .btn--add-form:hover {
   text-decoration: none;
   color: white;
 }
