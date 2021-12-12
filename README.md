@@ -14,19 +14,18 @@
 
 We hope you will find this product useful! Team run0run!
 
-## Demo link: [Formaker](pending)
+## Demo link: [Formaker](https://hackathon-junctionx.web.app/)
 
 ## Demo Youtube video: [Formaker demo video](pending)
 
-### Backend Repo: [Github](https://github.com/minhphong306/junctionx-hackathon)
+## Backend Repo: [Github](https://github.com/minhphong306/junctionx-hackathon)
 
 ## UI preview
 
-![](assets/1.jpg)
-![](assets/2.png)
-![](assets/3.png)
-![](assets/4.png)
-![](assets/logo.png)
+![](src/assets/1.jpg)
+![](src/assets/2.png)
+![](src/assets/3.png)
+![](src/assets/4.png)
 
 ---
 
@@ -61,4 +60,3 @@ npm run lint
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
-
