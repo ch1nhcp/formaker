@@ -1,3 +1,64 @@
-# Formaker
-In this challenge, FinOS, our challenger, would like our candidates to design a web-based system for managing dynamic forms for digital financial product applications. This system is expected to be reusable across platforms and effortless for the development teams in big companies. To apply for financial products, users are required to fill in a lot of information including but not limited to personal information, assets, income, etc. Hence, the traditional forms can become congested with fields. These fields may well be necessary but not all the time or to all users. The dynamic forms feature lets you create forms that make your customers glad it’s online and digitized in a fintech app. You can save customers time by populating form fields, such as the city and state based on postal code, save customers’ progress so they can finish later on any device, and verify data like bank account numbers to minimize errors.  You are - as the member of the development team - expected to design a web-based system for managing those information declarations via dynamic forms to make it faster and easier to use across platforms and reduce the efforts of the mobile development team.
-Trong thử thách này, FinOS mong muốn từ các hackers JunctionX Hanoi 2021 một hệ thống web quản lý các biể mẫu động cho các ứng dụng, sản phẩm tài chính kỹ thuật số. Hệ thống này được mong đợi có thể tái sử dụng trên toàn bộ nền tảng mà không tốn quá nhiều công sức của đội kỹ thuật IT trong các công ty lớn. Để đăng ký các sản phẩm tài chính, người dùng được yêu cầu điền rất nhiều thông tin liên quan đến cá nhân, tài khoản, thu nhập, etc. nhưng không phải lúc nào cũng cần thiết và được sử dụng trong nhiều trường hợp. Các hình thức truyền thống có thể gặp trở ngại bởi những mục yêu cầu có thể không được điền đầy đủ. Trong những trường hợp như vậy, tính năng biểu mẫu động cho phép khách hàng có thể điền những thông tin thật sự cần thiết và cung cấp sự thuận tiện bởi chúng được thực hiện online. Người dùng và các công ty tài chính có thể tiết kiệm thời gian bằng cách điền các trường biểu mẫu, ví dụ như thành phố và tiểu bang dựa trên mã bưu điện, lưu tiến trình của khách hàng để họ có thể hoàn thành trên bất kỳ thiết bị nào và xác minh dữ liệu như số tài khoản ngân hàng để giảm thiểu sai sót. Bạn- với tư cách là một thành viên đáng giá của nhóm phát triển- dự kiến sẽ thiết kế một hệ thống dựa trên web để quản lý các khai báo thông tin thông qua các biểu mẫu động nhằm giúp việc sử dụng các nền tảng nhanh hơn và dễ dàng hơn, giảm thiểu khối lượng lớn công việc của nhóm trong phát triển thiết bị di động.
+# Formaker - Make things simple!
+
+> Your life is short, but your form type is long!!
+> Let us help you save your time with Formaker!
+
+- This product enables users to generate forms quickly and easily, with excellent synchronization, therefore saving time and enhancing quality of life. It can be used in a variety of areas and has a high adaptability on the Internet, numerous online, and mobile platforms.
+- The following technologies are used by us:
+
+  - VueJS is a front-end design and programming framework that is contemporary, concise, and easy to use.
+
+  - Java and Spring Boot are two prominent programming languages and frameworks that have been around for a long time.
+
+- Because products are developed in a short period of time, mistakes are unavoidable. In the future, we intend to improve the user interface, introduce more current new features, update more fields, be able to configure fields to a higher degree, import forms from a variety of file kinds, and update the popular form type.
+
+We hope you will find this product useful! Team run0run!
+
+## Demo link: [Formaker](pending)
+
+## Demo Youtube video: [Formaker demo video](pending)
+
+### Backend Repo: [Github](https://github.com/minhphong306/junctionx-hackathon)
+
+## UI preview
+
+![](assets/1.jpg)
+![](assets/2.png)
+![](assets/3.png)
+![](assets/4.png)
+![](assets/logo.png)
+
+---
+
+## Project setup
+
+```
+npm install
+```
+
+```
+yarn install
+```
+
+### Compiles and hot-reloads for development
+
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+
+```
+yarn build
+```
+
+### Lints and fixes files
+
+```
+npm run lint
+```
+
+### Customize configuration
+
+See [Configuration Reference](https://cli.vuejs.org/config/).
+
