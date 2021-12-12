@@ -19,7 +19,8 @@
         <tr v-for="form in forms" :key="form.id">
           <td>{{ form.name }}</td>
           <td>{{ form.description }}</td>
-          <td>{{ form.status }}</td>
+          <td v-if="form.status === 1">Enabled</td>
+          <td v-else>Disabled</td>
           <td class="d-flex justify-content-between">
             <b-button
               variant="primary"
